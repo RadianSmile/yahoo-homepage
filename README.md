@@ -12,6 +12,6 @@ npm run dev
 
 ## TODO
 
-1. TODO: Section Main Content 2
-2. TODO: Aside Panel
+1. TODO: Main Content Section 2
+2. TODO: Right Aside Panel 
 3. RWD 
