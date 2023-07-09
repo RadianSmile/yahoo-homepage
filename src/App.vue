@@ -28,7 +28,21 @@ const hotKeyWords = [
   "烏克蘭戰爭",
   "三大法人",
 ];
-const sectionTitles = ["焦點", "運動", "娛樂", "FUN", "生活", "影音"];
+
+const sectionTitles = [
+  "焦點",
+  "運動",
+  "娛樂",
+  "FUN",
+  "生活",
+  "影音",
+  "焦點",
+  "運動",
+  "娛樂",
+  "FUN",
+  "生活",
+  "影音",
+];
 const activeTitle = "焦點";
 
 const asideCategories = ["熱銷商品", "挑戰低價"];
@@ -173,7 +187,7 @@ const activeCategory = "熱銷商品";
   </header>
 
   <!-- BODY AREA -->
-  <div id="page-container" class="max-w-[1200px] m-auto sm:pl-[15px] flex">
+  <div id="page-container" class="max-w-[1200px] m-auto md:pl-[15px] flex">
     <!-- Left: navigation bar -->
     <nav class="w-[145px] leading-none hidden md:flex">
       <div
@@ -199,13 +213,16 @@ const activeCategory = "熱銷商品";
     <main class="max-w-[635px]">
       <!-- Section Main Content 1 -->
       <section class="border-[1px] border-solid border-gray-200 mb-[16px]">
-        <nav class="flex bg-[#f2f2f4]">
+        <nav
+          class="flex bg-[#f2f2f4] overflow-x-scroll overflow-y-hidden hide-scrollbar"
+        >
           <a
-            v-for="title in sectionTitles"
-            class="w-[16%] h-[40px] flex items-center justify-center"
+            v-for="(title, index) in sectionTitles"
+            class="w-[16%] h-[40px] flex-none flex items-center justify-center"
             :class="{
               'bg-white border-t-[3px] border-t-solid border-ypurple text-ypurple font-bold':
                 title === activeTitle,
+              'inline-flex sm:hidden': index > 5,
             }"
             href="#"
             role="tab"
