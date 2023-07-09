@@ -1,8 +1,8 @@
 <script setup>
 // These Data would be replaced when going on production.
 import DesktopMainNews from "./components/DesktopMainNews.vue";
-import newsList from "./data/news.json";
-import productList from "./data/productList.json";
+import newsList from "./placeholder/data/news.json";
+import productList from "./placeholder/data/productList.json";
 import {
   group1,
   group2,
@@ -10,7 +10,7 @@ import {
   group4,
   group5,
   group6,
-} from "./data/main-nav.json";
+} from "./placeholder/data/main-nav.json";
 
 const mainNavLeftGroups = [group1, group2, group3];
 const mainNavRightGroups = [group4, group5, group6];
@@ -289,7 +289,7 @@ const activeCategory = "熱銷商品";
               <div class="flex p-[4%]">
                 <a href="#" class="block w-[40%] mr-[4%]">
                   <img
-                    src="/shopItem.jpeg"
+                    src="/yahoo-homepage/public/image/shopItem.jpeg"
                     class="w-full aspect-square"
                     :alt="product.item1"
                   />
@@ -322,7 +322,7 @@ const activeCategory = "熱銷商品";
         <div class="h-[40px] bg-[#e0e4e9] flex justify-between">
           <div class="inline-flex pl-[10px] bg-[#fadc00] h-full items-center">
             <img
-              src="/yahooTV.png"
+              src="/yahoo-homepage/public/image/yahooTV.png"
               class="h-[30px]"
               title="Yahoo TV"
               alt="Yahoo TV"
@@ -334,16 +334,16 @@ const activeCategory = "熱銷商品";
 
           <div class="flex items-center justify-center pr-[10px]">
             <button type="button">
-              <img src="/icon-video.png" class="w-[22px]" />
+              <img src="./assets/icon-video.png" class="w-[22px]" />
             </button>
           </div>
         </div>
         <div class="w-full">
-          <img src="/yahooTV-cover.png" />
+          <img src="/yahoo-homepage/public/image/yahooTV-cover.png" />
         </div>
         <div class="flex h-[44px] items-center">
           <img
-            src="/tv-head.png"
+            src="/yahoo-homepage/public/image/tv-head.png"
             class="w-[32px] h-[32px] mr-[6px] rounded-full"
           />
           <a class="text-[#324FE1] hover:underline font-bold"
@@ -382,7 +382,7 @@ const activeCategory = "熱銷商品";
               <div class="flex flex-col p-[7px]">
                 <a href="#" class="block w-[100%] mb-[4%]">
                   <img
-                    src="/product.jpeg"
+                    src="/yahoo-homepage/public/image/product.jpeg"
                     class="w-full aspect-square"
                     :alt="product.item1"
                   />
