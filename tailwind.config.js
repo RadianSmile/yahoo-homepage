@@ -7,7 +7,18 @@ export default {
     
   ],
   theme: {
+    screens: {
+      'sm': '576px', // for tablets 
+      // => @media (min-width: 576px) { ... }
 
+      'md': '990px', // for small laptop
+      // => @media (min-width: 990px) { ... }
+
+      'lg': '1200px',  // for laptop and desktop 
+      // => @media (min-width: 1200px) { ... }
+
+
+    },
     extend: {
       colors:{
         "yblue" : 'rgb(48,103,246)', // yahoo blue

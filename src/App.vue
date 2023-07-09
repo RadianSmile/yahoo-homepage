@@ -37,33 +37,45 @@ const activeCategory = "熱銷商品";
 
 <template>
   <!-- Header Section -->
-  <header class="sticky top-0 bg-body h-[118px] z-50">
-    <div class="container mx-auto flex max-w-[1200px] min-w-[980px]">
-      <h1 class="pt-[22px] pb-[12px] pl-[15px]">
+  <header class="sticky top-0 bg-body md:h-[118px] z-50 w-full">
+    <div
+      class="mx-auto flex max-w-[1200px] pt-[8px] pb-[10px] px-[12px] items-center lg:p-0"
+    >
+      <!-- Menu Toggle Button -->
+      <button
+        class="p-[8px] flex md:hidden items-start justify-center shrink-0 h-full"
+      >
+        <img class="w-[24px] h-[12px]" src="./assets/icon-menu.svg" />
+      </button>
+
+      <!-- Yahoo Logo -->
+      <h1
+        class="w-[80px] lg:w-[125px] shrink-0 lg:pt-[22px] lg:pb-[12px] lg:pl-[15px]"
+      >
         <img
-          class="w-[125px] mr-[15px] mt-[8px]"
+          class="w-[80px] lg:w-[125px] md:p-0 lg:mr-[15px] lg:mt-[8px]"
           alt="Yahoo奇摩"
           title="Yahoo奇摩"
           src="https://s.yimg.com/cv/apiv2/twfrontpage/logo/Yahoo-TW-desktop-FP@2x.png"
         />
       </h1>
 
-      <div class="flex flex-col pt-[22px] ml-[20px] w-full">
-        <div class="flex">
+      <div class="flex flex-col lg:pt-[22px] lg:ml-[20px] w-full">
+        <div class="flex w-full">
           <!-- Search Bar -->
           <form
             method="get"
             action="https://tw.search.yahoo.com/search"
-            class="w-full max-w-[635px] inline-flex items-center relative"
+            class="w-[calc(100%-42px)] lg:w-[635px] lg:max-w-[635px] inline-flex items-center relative"
           >
             <input
               placeholder="請輸入關鍵字"
-              class="w-full text-[18px] h-[50px] border-gray-400 border-solid border-[1px] rounded pl-3 pr-[130px] py-1 focus:border-yahoo-blue focus:outline-0"
+              class="w-full text-[18px] h-[34px] md:h-[50px] pr-[54px] md:pr-[130px] rounded-[17px] md:rounded border-gray-400 border-solid border-[1px] pl-3 py-1 focus:border-yahoo-blue focus:outline-0"
             />
 
             <!-- Search Button -->
             <button
-              class="bg-yblue rounded-r-[4px] h-[50px] absolute right-0 w-[75px] text-center"
+              class="bg-yblue h-[34px] w-[44px] md:w-[75px] md:h-[50px] rounded-[17px] md:rounded md:rounded-r-[4px] absolute right-0 text-center"
               type="button"
               aria-label="搜尋"
             >
@@ -79,7 +91,7 @@ const activeCategory = "熱銷商品";
 
             <!-- Microphone Button -->
             <button
-              class="absolute h-[50px] w-[40px] text-center right-[75px]"
+              class="hidden md:inline-block absolute h-[50px] w-[40px] text-center right-[75px]"
               type="button"
               aria-label="語音輸入"
             >
@@ -94,10 +106,10 @@ const activeCategory = "熱銷商品";
 
           <!-- Function Menu -->
           <ul
-            class="w-[calc(100%-635px)] flex items-center justify-end gap-4 pr-[20px]"
+            class="w-[42px] md:w-[calc(100%-635px)] flex-0 lg:shrink flex items-center justify-end gap-4 md:pr-[20px]"
           >
             <!-- Weather -->
-            <li class="flex text-center h-[36px] items-center">
+            <li class="hidden lg:flex text-center h-[36px] items-center">
               <div class="mr-1">
                 <img
                   class="mr-2 inline-block"
@@ -109,25 +121,28 @@ const activeCategory = "熱銷商品";
               <span>臺北市</span>
             </li>
 
-            <!-- Login Button -->
-            <li>
+            <!-- Member Login Button -->
+            <li class="flex-none flex items-center justify-center">
               <a
-                class="text-[13px] font-bold w-[78px] h-[25px] inline-block text-ypurple border-ypurple border-solid border-[2px] flex justify-center items-center rounded-[3px]"
+                class="hidden md:inline-flex text-[13px] font-bold w-[78px] h-[25px] text-ypurple border-ypurple border-solid border-[2px] justify-center items-center rounded-[3px]"
                 title="登入"
                 href="https://login.yahoo.com/?.src=twfp&.intl=tw&.lang=zh-Hant-TW&.done=https://tw.yahoo.com&activity=uh-signin"
                 >登入</a
               >
+              <button type="button" class="inline-block">
+                <img class="md:hidden" src="./assets/user.svg" />
+              </button>
             </li>
 
             <!-- Bell -->
-            <li>
+            <li class="hidden md:flex">
               <button class="text-center w-[30px] h-[36px]">
                 <img class="inline-block" src="./assets/bell.svg" alt="xxx" />
               </button>
             </li>
 
             <!-- Email -->
-            <li>
+            <li class="hidden md:flex">
               <button class="text-center w-[30px] h-[36px]">
                 <img class="inline-block" src="./assets/email.svg" alt="xxx" />
               </button>
@@ -137,7 +152,7 @@ const activeCategory = "熱銷商品";
 
         <!-- Search Keywords -->
         <div
-          class="h-[1.25rem] flex flex-wrap mt-[8px] text-[13px] overflow-hidden"
+          class="hidden md:flex h-[1.25rem] flex-wrap mt-[8px] text-[13px] overflow-hidden"
         >
           <span>熱搜：</span>
           <span v-for="(keyWord, i) in hotKeyWords"
@@ -158,12 +173,9 @@ const activeCategory = "熱銷商品";
   </header>
 
   <!-- BODY AREA -->
-  <div
-    id="page-container"
-    class="min-w-[980px] max-w-[1200px] m-auto pl-[15px] flex"
-  >
+  <div id="page-container" class="max-w-[1200px] m-auto sm:pl-[15px] flex">
     <!-- Left: navigation bar -->
-    <nav class="flex w-[145px] leading-none">
+    <nav class="w-[145px] leading-none hidden md:flex">
       <div
         v-for="navGroups in [mainNavLeftGroups, mainNavRightGroups]"
         class="w-1/2"
@@ -184,7 +196,7 @@ const activeCategory = "熱銷商品";
     </nav>
 
     <!-- Center: main content  -->
-    <main class="max-w-[635px] w-full">
+    <main class="max-w-[635px]">
       <!-- Section Main Content 1 -->
       <section class="border-[1px] border-solid border-gray-200 mb-[16px]">
         <nav class="flex bg-[#f2f2f4]">
@@ -287,7 +299,7 @@ const activeCategory = "熱銷商品";
     </main>
 
     <!-- Right Aside Area -->
-    <aside class="pl-[18px] pr-[16px] w-[408px] min-w-[408px]">
+    <aside class="hidden md:block pl-[18px] pr-[16px] w-[408px] min-w-[408px]">
       <!-- Yahoo TV -->
       <section id="yahoo-tv" class="mb-[16px]">
         <div class="h-[40px] bg-[#e0e4e9] flex justify-between">
