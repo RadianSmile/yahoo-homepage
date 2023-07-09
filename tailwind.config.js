@@ -7,6 +7,7 @@ export default {
     
   ],
   theme: {
+
     extend: {
       colors:{
         "yblue" : 'rgb(48,103,246)', // yahoo blue
