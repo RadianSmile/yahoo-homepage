@@ -451,7 +451,7 @@ const activeCategory = "熱銷商品";
               <div class="flex p-[4%]">
                 <a href="#" class="block w-[40%] mr-[4%]">
                   <img
-                    src="/yahoo-homepage/public/image/shopItem.jpeg"
+                    src="./placeholder/image/shopItem.jpeg"
                     class="w-full aspect-square"
                     :alt="product.item1"
                   />
@@ -484,7 +484,7 @@ const activeCategory = "熱銷商品";
         <div class="h-[40px] bg-[#e0e4e9] flex justify-between">
           <div class="inline-flex pl-[10px] bg-[#fadc00] h-full items-center">
             <img
-              src="/yahoo-homepage/public/image/yahooTV.png"
+              src="./placeholder/image/yahooTV.png"
               class="h-[30px]"
               title="Yahoo TV"
               alt="Yahoo TV"
@@ -501,11 +501,11 @@ const activeCategory = "熱銷商品";
           </div>
         </div>
         <div class="w-full">
-          <img src="/yahoo-homepage/public/image/yahooTV-cover.png" />
+          <img src="./placeholder/image/yahooTV-cover.png" />
         </div>
         <div class="flex h-[44px] items-center">
           <img
-            src="/yahoo-homepage/public/image/tv-head.png"
+            src="./placeholder/image/tv-head.png"
             class="w-[32px] h-[32px] mr-[6px] rounded-full"
           />
           <a class="text-[#324FE1] hover:underline font-bold"
@@ -545,7 +545,7 @@ const activeCategory = "熱銷商品";
               <div class="flex flex-col p-[7px]">
                 <a href="#" class="block w-[100%] mb-[4%]">
                   <img
-                    src="/yahoo-homepage/public/image/product.jpeg"
+                    src="./placeholder/image/product.jpeg"
                     class="w-full aspect-square"
                     :alt="product.item1"
                   />
