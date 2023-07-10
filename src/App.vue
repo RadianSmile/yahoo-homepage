@@ -375,10 +375,10 @@ const activeCategory = "熱銷商品";
             >{{ title }}</a
           >
         </nav>
-        <!-- v-if desktop, mobile -->
+        
         <section class="bg-white p-[14px] h-[340px]">
           <div class="flex h-full">
-            <!-- news image tiles -->
+            <!-- Heading News -->
             <div class="w-[56.5%] leading-none">
               <a
                 v-for="(news, index) in newsList.slice(0, 3)"
@@ -406,7 +406,7 @@ const activeCategory = "熱銷商品";
               </a>
             </div>
 
-            <!-- news list  -->
+            <!-- News List  -->
             <ul class="w-[43.5%] pl-[13px]">
               <li
                 v-for="(news, index) in newsList.slice(3, 9)"
@@ -444,7 +444,7 @@ const activeCategory = "熱銷商品";
             >{{ title }}</a
           >
         </nav>
-        <!-- v-if desktop, mobile -->
+
         <section class="bg-white">
           <ul class="flex flex-wrap h-full">
             <li v-for="product in productList" class="flex w-1/3">
@@ -500,6 +500,7 @@ const activeCategory = "熱銷商品";
             </button>
           </div>
         </div>
+
         <div class="w-full">
           <img src="./placeholder/image/yahooTV-cover.png" />
         </div>
@@ -514,7 +515,7 @@ const activeCategory = "熱銷商品";
         </div>
       </section>
 
-      <!-- 優質好物 -->
+      <!-- Goods: 優質好物 -->
       <section
         v-for="i in 2"
         class="border-[1px] border-solid border-gray-200 mb-[16px]"
@@ -539,6 +540,7 @@ const activeCategory = "熱銷商品";
           </nav>
         </header>
 
+        <!-- Another template of Goods -->
         <section class="bg-white">
           <ul class="flex flex-wrap h-full">
             <li v-for="product in productList.slice(0, 4)" class="flex w-1/4">
