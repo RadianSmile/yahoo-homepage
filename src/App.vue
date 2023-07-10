@@ -1,4 +1,51 @@
 <script setup>
+import { ref, onMounted } from "vue";
+// TODO: import requredd moudles only.
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
+
+const currentCategoryIndex = ref(0);
+let newsCategorySwiper;
+onMounted(() => {
+  newsCategorySwiper = new Swiper(".mobile-news-category-swiper", {
+    loop: false,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    on: {
+      activeIndexChange() {
+        currentCategoryIndex.value = newsCategorySwiper.activeIndex;
+      },
+    },
+  });
+
+  const newsBlockSwiper = new Swiper(".mobile-news-block-swiper", {
+    slidesPerView: 1,
+    noSwiping: true,
+    noSwipingSelector: ".mobile-news-highlight-swiper",
+    on: {
+      activeIndexChange() {
+        currentCategoryIndex.value = newsCategorySwiper.activeIndex;
+      },
+    },
+  });
+
+  const newsHighlightSwiper = new Swiper(".mobile-news-highlight-swiper", {
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+    },
+    // loop: true,
+  });
+});
+
+function slideTo(index) {
+  console.log(index);
+  currentCategoryIndex.value = index;
+  newsCategorySwiper.slideTo(index);
+}
+
+// Placeholder data
+
 import newsList from "./placeholder/data/news.json";
 import productList from "./placeholder/data/productList.json";
 import {
@@ -28,6 +75,18 @@ const hotKeyWords = [
 ];
 
 const sectionTitles = [
+  "焦點",
+  "運動",
+  "娛樂",
+  "FUN",
+  "生活",
+  "影音",
+  "焦點",
+  "運動",
+  "娛樂",
+  "FUN",
+  "生活",
+  "影音",
   "焦點",
   "運動",
   "娛樂",
@@ -72,7 +131,7 @@ const activeCategory = "熱銷商品";
         />
       </h1>
 
-      <div class="flex flex-col lg:pt-[22px] lg:ml-[20px] w-full">
+      <div class="flex flex-col lg:pt-[22px] ml-[10px] lg:ml-[20px] w-full">
         <div class="flex w-full">
           <!-- Search Bar -->
           <form
@@ -208,25 +267,92 @@ const activeCategory = "熱銷商品";
     </nav>
 
     <!-- Center: main content -->
-    <main class="max-w-[635px]">
+    <main class="w-full md:max-w-[635px]">
       <!-- MOBILE Main Content  -->
-      <section class="sm:hidden">
-        <nav
-          class="flex bg-[#f2f2f4] overflow-x-scroll overflow-y-hidden hide-scrollbar"
-        >
-          <a
-            v-for="(title, index) in sectionTitles"
-            class="w-[16%] h-[40px] flex-none flex items-center justify-center"
-            :class="{
-              'bg-white border-t-[3px] border-t-solid border-ypurple text-ypurple font-bold':
-                title === activeTitle,
-              'inline-flex sm:hidden': index > 5,
-            }"
-            href="#"
-            role="tab"
-            >{{ title }}</a
-          >
+      <section class="md:hidden">
+        <nav>
+          <!-- Slider main container -->
+          <div class="mobile-news-category-swiper w-full shadow h-[40px]">
+            <!-- Additional required wrapper -->
+            <ul class="swiper-wrapper">
+              <!-- Slides -->
+              <li
+                class="swiper-slide !w-[60px]"
+                v-for="(title, index) in sectionTitles"
+              >
+                <a
+                  class="w-[60px] h-[40px] flex-none flex items-center justify-center"
+                  :class="{
+                    ' border-b-[3px] border-b-solid border-ypurple text-ypurple font-bold':
+                      currentCategoryIndex === index,
+                  }"
+                  @click="slideTo(index)"
+                  href="#"
+                  role="tab"
+                  >{{ title }}</a
+                >
+              </li>
+            </ul>
+          </div>
         </nav>
+
+        <div class="mobile-news-block-swiper w-full h-full">
+          <div class="swiper-wrapper">
+            <section
+              _v-for="(title, sectionIndex) in sectionTitles"
+              v-for="i in sectionTitles"
+              class="swiper-slide overflow-x-hidden"
+            >
+              <div class="mobile-news-highlight-swiper w-full bg-white">
+                <ul class="swiper-wrapper w-full">
+                  <li
+                    v-for="(news, newsIndexInCategory) in newsList.slice(3, 9)"
+                    class="swiper-slide p-[10px]"
+                  >
+                    <div class="relative overflow-hidden rounded-lg">
+                      <img
+                        :src="`https://picsum.photos/id/${newsIndexInCategory}/320/180`"
+                        class="object-cover w-full ratio-[16/9]"
+                        :alt="news.title"
+                        :title="news.title"
+                      />
+
+                      <p
+                        class="flex items-end absolute p-[20px] max-h-[45%] w-full h-full bottom-0 text-white bg-gradient-to-b from-transparent to-[rgb(0_0_0/.8)]"
+                      >
+                        {{ news.title }}
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <ul class="">
+                <li
+                  v-for="(news, newsIndexInCategory) in newsList.slice(0, 9)"
+                  class="px-[16px] py-[8px] flex"
+                >
+                  <img
+                    class="max-w-[88px] flex-none rounded-md"
+                    :src="`https://picsum.photos/id/21${newsIndexInCategory}/100/100`"
+                    loading="lazy"
+                  />
+                  <p class="pl-[12px]">
+                    <a
+                      href="#"
+                      class="block text-[#1d2228] font-bold text-[16px] hover:underline mb-[10px] leading-[20px]"
+                      ><span class="">{{ news.title }}</span></a
+                    >
+                    <span
+                      class="text-[13px] line-clamp-1 leading-none text-[rgb(95_95_95)]"
+                      >{{ news.abstract }}</span
+                    >
+                  </p>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </section>
 
       <!-- DESKTOP Section Main Content 1  -->
@@ -238,7 +364,7 @@ const activeCategory = "熱銷商品";
         >
           <a
             v-for="(title, index) in sectionTitles"
-            class="w-[16%] h-[40px] flex-none flex items-center justify-center"
+            class="w-[16%] h-[40px] flex-none flex items-center justify-center text-[15px]"
             :class="{
               'bg-white border-t-[3px] border-t-solid border-ypurple text-ypurple font-bold':
                 title === activeTitle,

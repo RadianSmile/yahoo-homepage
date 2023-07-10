@@ -28,7 +28,8 @@ export default {
       },
       fontFamily: {
         // copied from Yahoo.com, applied on body tag.
-        "body" : "\"Helvetica Neue\", Helvetica, Arial, STHeitiTC-light, STHeiti, \"Microsoft JhengHei\", 微軟正黑體, sans-serif"
+        "body" : "\"Helvetica Neue\", Helvetica, Arial, STHeitiTC-light, STHeiti, \"Microsoft JhengHei\", 微軟正黑體, sans-serif",
+        "mobile":"\"Helvetica Neue\", Helvetica, Arial, sans-serif"
       }
     },
   },
