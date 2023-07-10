@@ -1,6 +1,4 @@
 <script setup>
-// These Data would be replaced when going on production.
-import DesktopMainNews from "./components/DesktopMainNews.vue";
 import newsList from "./placeholder/data/news.json";
 import productList from "./placeholder/data/productList.json";
 import {
@@ -209,10 +207,32 @@ const activeCategory = "熱銷商品";
       </div>
     </nav>
 
-    <!-- Center: main content  -->
+    <!-- Center: main content -->
     <main class="max-w-[635px]">
-      <!-- Section Main Content 1 -->
-      <section class="border-[1px] border-solid border-gray-200 mb-[16px]">
+      <!-- MOBILE Main Content  -->
+      <section class="sm:hidden">
+        <nav
+          class="flex bg-[#f2f2f4] overflow-x-scroll overflow-y-hidden hide-scrollbar"
+        >
+          <a
+            v-for="(title, index) in sectionTitles"
+            class="w-[16%] h-[40px] flex-none flex items-center justify-center"
+            :class="{
+              'bg-white border-t-[3px] border-t-solid border-ypurple text-ypurple font-bold':
+                title === activeTitle,
+              'inline-flex sm:hidden': index > 5,
+            }"
+            href="#"
+            role="tab"
+            >{{ title }}</a
+          >
+        </nav>
+      </section>
+
+      <!-- DESKTOP Section Main Content 1  -->
+      <section
+        class="hidden md:block border-[1px] border-solid border-gray-200 mb-[16px]"
+      >
         <nav
           class="flex bg-[#f2f2f4] overflow-x-scroll overflow-y-hidden hide-scrollbar"
         >
@@ -234,16 +254,30 @@ const activeCategory = "熱銷商品";
           <div class="flex h-full">
             <!-- news image tiles -->
             <div class="w-[56.5%] leading-none">
-              <DesktopMainNews
+              <a
                 v-for="(news, index) in newsList.slice(0, 3)"
-                :news="news"
-                :index="index"
+                class="inline-block relative"
                 :class="{
                   'h-[206px] w-full mb-[0.5%]': index === 0,
                   'h-[106px] w-[49.75%] mr-[0.5%] ': index === 1,
                   'h-[106px] w-[49.75%]': index === 2,
                 }"
-              ></DesktopMainNews>
+                :href="`#${news.title}`"
+              >
+                <img
+                  :src="news.image"
+                  class="absolute object-cover w-full h-full"
+                  :alt="news.title"
+                />
+                <p
+                  class="flex items-end absolute p-[12px] max-h-[45%] w-full h-full bottom-0 text-white bg-gradient-to-b from-transparent to-[rgb(0_0_0/.8)]"
+                  :class="{
+                    'text-[20px]': index === 0,
+                  }"
+                >
+                  {{ news.title }}
+                </p>
+              </a>
             </div>
 
             <!-- news list  -->
@@ -267,11 +301,13 @@ const activeCategory = "熱銷商品";
         </section>
       </section>
 
-      <!--  Main Content Section 2 -->
-      <section class="border-[1px] border-solid border-gray-200 mb-[16px]">
+      <!-- Section Main Content 2 -->
+      <section
+        class="hidden md:block border-[1px] border-solid border-gray-200 mb-[16px]"
+      >
         <nav class="flex bg-[#f2f2f4]">
           <a
-            v-for="title in sectionTitles"
+            v-for="title in sectionTitles.slice(0, 3)"
             class="w-[16%] h-[40px] flex items-center justify-center"
             :class="{
               'bg-white border-t-[3px] border-t-solid border-ypurple text-ypurple font-bold':
@@ -376,6 +412,7 @@ const activeCategory = "熱銷商品";
             >
           </nav>
         </header>
+
         <section class="bg-white">
           <ul class="flex flex-wrap h-full">
             <li v-for="product in productList.slice(0, 4)" class="flex w-1/4">
@@ -388,12 +425,9 @@ const activeCategory = "熱銷商品";
                   />
                 </a>
                 <div class="w-[100%] leading-[13px]">
-                  <span
-                    class="text-[13px] text-[#5f5f5f] inline-block mb-[4px]"
+                  <span class="text-[13px] text-[#5f5f5f] inline-block mb-[4px]"
+                    >滿1件享89折</span
                   >
-                    滿1件享89折</span
-                  >
-
                   <a
                     href="#"
                     :title="product.item2"
