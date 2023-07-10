@@ -8,7 +8,8 @@ https://radiansmile.github.io/yahoo-homepage/
 2. To fufil so layout and style is the first consideration, in order to fulfill the requirment: make it looks like what is given. Detail takes time a lot.
 3. Because time is limited, to simulate interactions and layout on mobile view of tw.yahoo.com, Swipe.js is integreated. But this plugin is buggy, so the layout below could not fulfuilled at this assignment. 
 <img width="413" alt="image" src="https://github.com/RadianSmile/yahoo-homepage/assets/3115785/9ef8926a-473a-4093-babe-028a491e6cad">
-4. And there is still a lot of work to make best UX on mobile interaction.
+
+4. Fuction of switching tabs is not implmented yet on mobile, and there is still a lot of work to make best UX on mobile interaction.
 
 Thanks for your time! Looking forward your feedback.
 
