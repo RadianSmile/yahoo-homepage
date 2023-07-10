@@ -4,7 +4,7 @@ https://radiansmile.github.io/yahoo-homepage/
 
 ## Note
 
-1. All frontend code is in `App.vue` and `index.html`. I don't have time to improve readibility, so hope the code is not hard to understand so far!
+1. All frontend code is in `App.vue`, `index.html` and `tailwind.config`. I don't have time to improve readibility, so hope the code is not hard to understand so far! Tailwindcss is the styling framework, usage of all the classname could be found on its doc.
 2. To fufil so layout and style is the first consideration, in order to fulfill the requirment: make it looks like what is given. Detail takes time a lot.
 3. Because time is limited, to simulate interactions and layout on mobile view of tw.yahoo.com, Swipe.js is integreated. But this plugin is buggy, so the layout below could not fulfuilled at this assignment. 
 <img width="413" alt="image" src="https://github.com/RadianSmile/yahoo-homepage/assets/3115785/9ef8926a-473a-4093-babe-028a491e6cad">
